@@ -1,11 +1,18 @@
 {
-  "name": "React Chrome Extension",
-  "description": "A starter for creating Chrome Extensions with React",
+  "name": "Chrome Debugger",
+  "description": "Use the debugger API",
   "version": "1.0",
   "manifest_version": 3,
+  "permissions": [
+    "activeTab",
+    "debugger"
+  ],
+  "optional_permissions": [
+    "<all_urls>"
+  ],
   "action": {
     "default_popup": "index.html",
-    "default_title": "Open the popup"
+    "default_title": "Chrome Debugger"
   },
   "icons": {
     "16": "logo192.png",
