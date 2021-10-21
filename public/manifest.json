@@ -8,7 +8,8 @@
     "debugger",
     "alarms",
     "storage",
-    "background"
+    "background",
+    "tabs"
   ],
   "background": {
     "service_worker": "background.js",
