@@ -1,4 +1,4 @@
-export default function Home({ time, handleOn, handleOff, handlePause, setPage, handleReset }) {
+export default function Home({ ticketCount, increaseTicketCount, decreaseTicketCount, time, handleOn, handleOff, handlePause, setPage, handleReset }) {
   return (
     <>
       <h1>Elapsed time</h1>
@@ -15,6 +15,15 @@ export default function Home({ time, handleOn, handleOff, handlePause, setPage, 
       <button onClick={handleReset}>
         Reset
       </button>
+      <div>
+        <button onClick={decreaseTicketCount}>
+          -
+        </button>
+        <span>Ticket count: {ticketCount} </span>
+        <button onClick={increaseTicketCount}>
+          +
+        </button>
+      </div>
       <div>
         <a onClick={() => setPage('settings')}>Settings</a>
       </div>

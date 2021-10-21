@@ -6,11 +6,21 @@ import Settings from "./components/Settings";
 function App() {
   const [time, setTime] = useState()
   const [page, setPage] = useState('home')
+  const [ticketCount, setTicketCount] = useState()
 
   useEffect(() => {
     chrome.storage.local.get(['minutes'], function(result) {
       console.log("storage.local.minutes: ", result)
       setTime(result.minutes)
+    })
+    chrome.storage.local.get(['tickets'], function(result) {
+      console.log("storage.local.tickets: ", result)
+      if (result.tickets) {
+        setTicketCount(result.tickets)
+      } else {
+        setTicketCount(0)
+        chrome.storage.local.set({ tickets: 0 })
+      }
     })
   }, [])
 
@@ -47,9 +57,19 @@ function App() {
     setAlarm()
   }
 
+  const increaseTicketCount = () => {
+    chrome.storage.local.set({ tickets: ticketCount + 1 });
+    setTicketCount(ticketCount + 1);
+  }
+
+  const decreaseTicketCount = () => {
+    chrome.storage.local.set({ tickets: ticketCount - 1 });
+    setTicketCount(ticketCount - 1);
+  }
+
   return (
     <div className="app">
-      {page === 'home' && <Home time={time} handlePause={handlePause} handleOff={handleOff} handleOn={handleOn} setPage={setPage} handleReset={handleReset} />}
+      {page === 'home' && <Home ticketCount={ticketCount} increaseTicketCount={increaseTicketCount} decreaseTicketCount={decreaseTicketCount} time={time} handlePause={handlePause} handleOff={handleOff} handleOn={handleOn} setPage={setPage} handleReset={handleReset} />}
       {page === 'settings' && <Settings setPage={setPage} />}
     </div>
   );
