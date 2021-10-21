@@ -1,3 +1,7 @@
+const handleLinkGroupClick = () => {
+  chrome.runtime.sendMessage("openTabGroupOne");
+}
+
 export default function Home({ ticketCount, increaseTicketCount, decreaseTicketCount, time, handleOn, handleOff, handlePause, setPage, handleReset }) {
   return (
     <>
@@ -22,6 +26,14 @@ export default function Home({ ticketCount, increaseTicketCount, decreaseTicketC
         <span>Ticket count: {ticketCount} </span>
         <button onClick={increaseTicketCount}>
           +
+        </button>
+      </div>
+      <div>
+        <button onClick={handleLinkGroupClick}>
+          Open link group 1
+        </button>
+        <button>
+          Open link group 2
         </button>
       </div>
       <div>
