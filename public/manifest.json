@@ -5,11 +5,11 @@
   "manifest_version": 3,
   "permissions": [
     "activeTab",
-    "debugger"
+    "debugger",
+    "alarms",
+    "storage"
   ],
-  "optional_permissions": [
-    "<all_urls>"
-  ],
+  "optional_permissions": [],
   "action": {
     "default_popup": "index.html",
     "default_title": "Chrome Debugger"
