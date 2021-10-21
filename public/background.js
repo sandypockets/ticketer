@@ -1,7 +1,7 @@
 let storedTime;
 
 chrome.storage.local.get(['minutes'], function(result) {
-  console.log("RESULT", result)
+  console.log("storage.local.minutes: ", result)
   storedTime = result.minutes
 })
 
