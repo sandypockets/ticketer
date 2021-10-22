@@ -20,25 +20,32 @@ chrome.storage.onChanged.addListener(function() {
     console.log("EVENT!--storage.local.tickets: ", result.tickets)
   })
 
-  chrome.storage.local.get(['urlOne'], function(result) {
-    console.log("EVENT!--storage.local.urlOne: ", result.urlOne)
+  chrome.storage.local.get(['urls'], function(result) {
+    console.log("LINE 25 storage.local.urls: ", result)
   })
 })
 
 
 chrome.runtime.onMessage.addListener(function(message) {
   if (message === 'openTabGroupOne') {
-    const urls = ["https://google.com", "https://sandypockets.dev"]
-    for (let url of urls) {
-      chrome.tabs.create({ url: url })
-    }
+    let storedUrls;
+    chrome.storage.local.get(['urls'], function(result) {
+      console.log("EVENT!--storage.local.RESULT: ", result.urls)
+      storedUrls = result.urls;
+      const urlsArr = Object.entries(storedUrls)
+      console.log(urlsArr)
+      for (let arr in urlsArr) {
+        console.log("arr[1]", urlsArr[arr][1])
+        chrome.tabs.create({ url: urlsArr[arr][1] })
+      }
+    })
   }
   if (message.id === 'setUrls') {
     console.log(message.payload)
-    for (let url in message.payload) {
-      console.log("URL PAYLOAD: ", url, message.payload[url])
-      chrome.storage.local.set({ [message.payload.url]: message.payload[url] });
-    }
+      chrome.storage.local.set({
+        urls: message.payload
+        // urls: { [url]: message.payload[url] }
+      });
   }
 })
 

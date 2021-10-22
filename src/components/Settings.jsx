@@ -8,7 +8,7 @@ export default function Settings({ setPage }) {
   })
 
   useEffect(() => {
-    chrome.storage.local.get(['urlOne'], function(result) {
+    chrome.storage.local.get(['urls'], function(result) {
       console.log("storage.local.urlOne: ", result)
       // setUrlOne(result.urlOne)
       setState(prev => ({ ...prev, urlOne: result.urlOne }))
