@@ -35,7 +35,9 @@ chrome.runtime.onMessage.addListener(function(message) {
       const urlsArr = Object.entries(storedUrls)
       console.log(urlsArr)
       for (let arr in urlsArr) {
-        console.log("arr[1]", urlsArr[arr][1])
+        console.log("arr: ", urlsArr[arr])
+        console.log("arr[0]: ", urlsArr[arr][0])
+        console.log("arr[1]: ", urlsArr[arr][1])
         chrome.tabs.create({ url: urlsArr[arr][1] })
       }
     })

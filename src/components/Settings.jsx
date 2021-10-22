@@ -9,21 +9,11 @@ export default function Settings({ setPage }) {
 
   useEffect(() => {
     chrome.storage.local.get(['urls'], function(result) {
-      console.log("storage.local.urlOne: ", result)
-      // setUrlOne(result.urlOne)
-      setState(prev => ({ ...prev, urlOne: result.urlOne }))
-    })
-
-    chrome.storage.local.get(['urlTwo'], function(result) {
-      console.log("storage.local.urlTwo: ", result)
-      // setUrlTwo(result.urlTwo)
-      setState(prev => ({ ...prev, urlTwo: result.urlTwo }))
-    })
-
-    chrome.storage.local.get(['urlThree'], function(result) {
-      console.log("storage.local.urlThree: ", result)
-      // setUrlTwo(result.urlTwo)
-      setState(prev => ({ ...prev, urlThree: result.urlThree }))
+      const urlsArr = Object.entries(result.urls)
+      for (let url in urlsArr) {
+        let stateKey = [urlsArr[url][0]];
+        setState(prev => ({ ...prev, [stateKey]: urlsArr[url][1] }))
+      }
     })
   }, [])
 
@@ -36,20 +26,6 @@ export default function Settings({ setPage }) {
         urlThree: state.urlThree
       }
     });
-  }
-
-  const getUrls = () => {
-    chrome.storage.local.get(['urlOne'], function(result) {
-      console.log("storage.local.urlOne: ", result)
-      // setUrlOne(result.urlOne)
-      setState(prev => ({ ...prev, urlOne: result.urlOne }))
-    })
-
-    chrome.storage.local.get(['urlTwo'], function(result) {
-      console.log("storage.local.urlTwo: ", result)
-      // setUrlTwo(result.urlTwo)
-      setState(prev => ({ ...prev, urlTwo: result.urlTwo }))
-    })
   }
 
   const formGroup = [
@@ -81,7 +57,6 @@ export default function Settings({ setPage }) {
         </>
       ))}
       <button onClick={handleSubmit}>Save URLs</button>
-      <button onClick={getUrls}>Get URLs</button>
     </>
   )
 }
