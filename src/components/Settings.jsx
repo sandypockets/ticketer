@@ -81,10 +81,10 @@ export default function Settings({ setPage }) {
     <>
       <div className="container">
         <div>
-          <h1>Settings</h1>
+          <h1 className="title">Settings</h1>
 
-          <div className="urlForms">
-            <h3>Link group 1</h3>
+          <div className="urlForms card">
+            <h3 className="cardTitle">Link group 1</h3>
             {formGroups.groupOne.map((item, index) => (
               <div className="urlForm">
                 <label className="urlLabel">{item.label}</label>
@@ -93,8 +93,8 @@ export default function Settings({ setPage }) {
             ))}
           </div>
 
-          <div className="urlForms">
-            <h3>Link group 2</h3>
+          <div className="urlForms card">
+            <h3 className="cardTitle">Link group 2</h3>
             {formGroups.groupTwo.map((item, index) => (
               <div className="urlForm">
                 <label className="urlLabel">{item.label}</label>

@@ -1,40 +1,35 @@
 .app {
     width: 330px;
-    height: 535px;
-    background-color: #282c34;
+    height: 490px;
+    /*background-color: #282c34;*/
+    background-color: #004c3f;
     font-size: calc(10px + 2vmin);
-    color: white;
+    color: #fbf7ed;
     padding: 10px;
 }
 
-.get-started {
-    display: flex;
-    justify-content: center;
+a {
+    color: #fbf7ed;
+    cursor: pointer;
 }
 
-a, p, h1, h2, h3, h4 {
-    color: #61dafb;
+h1, h2, h3, h4, span, label, ::placeholder {
+    color: #004c3f;
 }
 
 p {
+    color: #6b7177;
     font-size: 14px;
 }
 
 h1.title {
-    color: rgb(4, 108, 138);
+    color: #fbf7ed;
+    margin: 0 0 0 7px;
 }
 
-.container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+
 
 div.urlForms {
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    /*justify-content: center;*/
     margin: 1em auto;
 }
 
@@ -56,11 +51,21 @@ label.urlLabel {
     margin: 0 1em;
 }
 
-h3.quickTabs {
-    margin: 2em 0 0 0;
-}
 
 /* Utility classes */
+h3.cardTitle {
+    margin: 10px 0;
+    font-weight: 900;
+    letter-spacing: 0.025em;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .flex-center {
     display: flex;
     justify-content: center;
@@ -68,13 +73,22 @@ h3.quickTabs {
 
 button {
     padding: 0.5em;
-    background-color: #61dafb;
-    /*background-color: rgb(4, 108, 138);*/
-    /*color: rgb(220, 219, 216);*/
-    color: rgb(4, 108, 138);
+    /*background-color: #61dafb;*/
+    /*color: rgb(4, 108, 138);*/
+    background-color: #008060;
+    color: #fbf7ed;
     border: none;
     margin: 0.5em;
     font-weight: bold;
+    cursor: pointer;
+    box-shadow: 1px 1px 2px #00212b;
+    border-radius: 2px;
+}
+
+button.square {
+    height: 25px;
+    width: 25px;
+    font-weight: 900;
 }
 
 div.buttonGroup {
@@ -83,15 +97,20 @@ div.buttonGroup {
 }
 
 .card {
-    background-color: rgb(4, 108, 138);
+    /*background-color: rgb(4, 108, 138);*/
+    background-color: #fbf7ed;
     padding: 10px;
     margin: 7px;
     border-radius: 4px;
-    box-shadow: 3px 3px black;
+    box-shadow: 3px 3px 4px #00212b;
 }
 
 h1 {
     margin: 0;
+}
+
+input {
+    color: black;
 }
 /* END Utility classes */
 
@@ -100,7 +119,14 @@ div.elapsedTime {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 40px;
 }
 
+
 /* END Timer */
+
+/* Quick tabs */
+p.info {
+   margin: 0 0 1em 0;
+}
+/* End Quick tabs */
