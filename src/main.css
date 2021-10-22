@@ -1,6 +1,6 @@
 .app {
-    width: 250px;
-    height: 420px;
+    width: 330px;
+    height: 535px;
     background-color: #282c34;
     font-size: calc(10px + 2vmin);
     color: white;
@@ -12,8 +12,16 @@
     justify-content: center;
 }
 
-a {
+a, p, h1, h2, h3, h4 {
     color: #61dafb;
+}
+
+p {
+    font-size: 14px;
+}
+
+h1.title {
+    color: rgb(4, 108, 138);
 }
 
 .container {
@@ -47,3 +55,52 @@ div.urlForm {
 label.urlLabel {
     margin: 0 1em;
 }
+
+h3.quickTabs {
+    margin: 2em 0 0 0;
+}
+
+/* Utility classes */
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding: 0.5em;
+    background-color: #61dafb;
+    /*background-color: rgb(4, 108, 138);*/
+    /*color: rgb(220, 219, 216);*/
+    color: rgb(4, 108, 138);
+    border: none;
+    margin: 0.5em;
+    font-weight: bold;
+}
+
+div.buttonGroup {
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background-color: rgb(4, 108, 138);
+    padding: 10px;
+    margin: 7px;
+    border-radius: 4px;
+    box-shadow: 3px 3px black;
+}
+
+h1 {
+    margin: 0;
+}
+/* END Utility classes */
+
+/* Timer */
+div.elapsedTime {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+/* END Timer */
