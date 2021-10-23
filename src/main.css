@@ -1,16 +1,25 @@
 :root {
-    --primaryColor: #008060;
-    --secondaryColor: #ffffff;
-    --primaryAccent: #fbf7ed;
-    --secondaryAccent: #ffffff;
+    --primaryColor: #1F363D;
+    --secondaryColor: #CFE0C3;
+    --primaryAccent: #70A9A1;
     --black: #151515;
-
+    /* Purple Pink */
+    /*--primaryColor: #480ca8;*/
+    /*--secondaryColor: #ffffff;*/
+    /*--primaryAccent: #f72585;*/
+    /*--secondaryColor: #4cc9f0;*/
+    /*--black: #151515;*/
+    /* Greens */
+    /*--primaryColor: #008060;*/
+    /*--secondaryColor: #ffffff;*/
+    /*--primaryAccent: #fbf7ed;*/
+    /*--secondaryColor: #ffffff;*/
+    /*--black: #151515;*/
 }
 
 .app {
     width: 330px;
     height: 490px;
-    /*background-color: #282c34;*/
     background-color: var(--primaryColor);
     font-size: calc(10px + 2vmin);
     color: var(--primaryAccent);
@@ -32,14 +41,8 @@ p {
 }
 
 h1.title {
-    color: var(--secondaryAccent);
+    color: var(--secondaryColor);
     margin: 0 0 0 7px;
-}
-
-
-
-div.urlForms {
-    margin: 1em auto;
 }
 
 div.urlForms > h3 {
@@ -50,16 +53,17 @@ div.urlForms > h3 {
 button.saveUrls {
     display: flex;
     justify-content: center;
+    background-color: var(--secondaryColor);
+    color: var(--primaryColor);
 }
 
-div.urlForm {
-    margin: 0 auto;
+h3.linkGroupTitle {
+    margin: 0;
 }
 
 label.urlLabel {
     margin: 0 1em;
 }
-
 
 /* Utility classes */
 h3.cardTitle {
@@ -81,12 +85,9 @@ h3.cardTitle {
 }
 
 button {
-    padding: 0.5em;
-    /*background-color: #61dafb;*/
-    /*color: rgb(4, 108, 138);*/
+    padding: 0.5em 1em;
     background-color: var(--primaryColor);
-    /*background-color: #008060;*/
-    color: var(--secondaryAccent);
+    color: var(--secondaryColor);
     border: none;
     margin: 0.5em;
     font-weight: bold;
@@ -106,8 +107,14 @@ div.buttonGroup {
     justify-content: center;
 }
 
+svg.svg {
+    fill: var(--secondaryColor);
+    height: 1em;
+    width: 1em;
+    margin-left: -6px;
+}
+
 .card {
-    /*background-color: rgb(4, 108, 138);*/
     background-color: var(--secondaryColor);
     padding: 10px;
     margin: 7px;
@@ -131,8 +138,6 @@ div.elapsedTime {
     align-items: center;
     padding: 0 40px;
 }
-
-
 /* END Timer */
 
 /* Quick tabs */

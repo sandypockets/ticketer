@@ -10,11 +10,9 @@ function App() {
 
   useEffect(() => {
     chrome.storage.local.get(['minutes'], function(result) {
-      console.log("storage.local.minutes: ", result)
       setTime(result.minutes)
     })
     chrome.storage.local.get(['tickets'], function(result) {
-      console.log("storage.local.tickets: ", result)
       if (result.tickets) {
         setTicketCount(result.tickets)
       } else {

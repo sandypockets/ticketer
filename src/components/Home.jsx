@@ -19,12 +19,12 @@ export default function Home({ ticketCount, increaseTicketCount, decreaseTicketC
               <h3>minutes</h3>
             </div>
           </div>
-          <div>
+          <div className="buttonGroup">
             <button onClick={handleOn}>
-              Turn on
+              On
             </button>
             <button onClick={handleOff}>
-              Turn off
+              Off
             </button>
             <button onClick={handlePause}>
               Pause
@@ -40,11 +40,17 @@ export default function Home({ ticketCount, increaseTicketCount, decreaseTicketC
           <div className="buttonGroup">
             <div>
               <button className="square" onClick={decreaseTicketCount}>
-                -
+                <svg xmlns="http://www.w3.org/2000/svg" className="svg" viewBox="0 0 24 24"
+                     stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
+                </svg>
               </button>
               <span>Ticket count: <strong>{ticketCount}</strong> </span>
               <button className="square" onClick={increaseTicketCount}>
-                +
+                <svg xmlns="http://www.w3.org/2000/svg" className="svg" viewBox="0 0 24 24"
+                     stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                </svg>
               </button>
             </div>
           </div>
