@@ -16,7 +16,7 @@ export default function Home({ ticketCount, increaseTicketCount, decreaseTicketC
             <div className="elapsedTime">
               <h3>Time spent:</h3>
               <h2>{time ? time : 0}</h2>
-              <h3>minutes</h3>
+              <h3>{time !== 1 ? "minutes" : "minute"}</h3>
             </div>
           </div>
           <div className="buttonGroup">
