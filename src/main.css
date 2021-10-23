@@ -50,6 +50,10 @@ div.urlForms > h3 {
     justify-content: center;
 }
 
+div.urlForm > input {
+    width: 200px;
+}
+
 button.saveUrls {
     display: flex;
     justify-content: center;
