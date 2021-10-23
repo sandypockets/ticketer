@@ -62,8 +62,9 @@ chrome.runtime.onMessage.addListener(function(message) {
     console.log(message.payload)
       chrome.storage.local.set({
         urls: message.payload
-        // urls: { [url]: message.payload[url] }
       });
   }
+
+  console.log(message) // Debugging
 })
 
