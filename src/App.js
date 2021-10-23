@@ -50,9 +50,13 @@ function App() {
   const handlePause = () => {
     pauseAlarm()
   }
+
   const handleReset = () => {
-    clearAlarm()
-    setAlarm()
+    setTime(0)
+    chrome.alarms.clearAll();
+    chrome.storage.local.set({ minutes: 0 });
+    chrome.alarms.create({ delayInMinutes: 1, periodInMinutes: 1 });
+    window.close();
   }
 
   const increaseTicketCount = () => {
