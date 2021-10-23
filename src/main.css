@@ -1,29 +1,38 @@
+:root {
+    --primaryColor: #008060;
+    --secondaryColor: #ffffff;
+    --primaryAccent: #fbf7ed;
+    --secondaryAccent: #ffffff;
+    --black: #151515;
+
+}
+
 .app {
     width: 330px;
     height: 490px;
     /*background-color: #282c34;*/
-    background-color: #004c3f;
+    background-color: var(--primaryColor);
     font-size: calc(10px + 2vmin);
-    color: #fbf7ed;
+    color: var(--primaryAccent);
     padding: 10px;
 }
 
 a {
-    color: #fbf7ed;
+    color: var(--primaryAccent);
     cursor: pointer;
 }
 
-h1, h2, h3, h4, span, label, ::placeholder {
-    color: #004c3f;
+h1, h2, h3, h4, span, label {
+    color: var(--primaryColor);
 }
 
 p {
-    color: #6b7177;
+    color: var(--black);
     font-size: 14px;
 }
 
 h1.title {
-    color: #fbf7ed;
+    color: var(--secondaryAccent);
     margin: 0 0 0 7px;
 }
 
@@ -75,8 +84,9 @@ button {
     padding: 0.5em;
     /*background-color: #61dafb;*/
     /*color: rgb(4, 108, 138);*/
-    background-color: #008060;
-    color: #fbf7ed;
+    background-color: var(--primaryColor);
+    /*background-color: #008060;*/
+    color: var(--secondaryAccent);
     border: none;
     margin: 0.5em;
     font-weight: bold;
@@ -98,10 +108,10 @@ div.buttonGroup {
 
 .card {
     /*background-color: rgb(4, 108, 138);*/
-    background-color: #fbf7ed;
+    background-color: var(--secondaryColor);
     padding: 10px;
     margin: 7px;
-    border-radius: 4px;
+    border-radius: 5px;
     box-shadow: 3px 3px 4px #00212b;
 }
 
