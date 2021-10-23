@@ -12,11 +12,14 @@ export default function Settings({ setPage }) {
 
   useEffect(() => {
     chrome.storage.local.get(['urls'], function(result) {
-      const urlsArr = Object.entries(result.urls)
-      for (let url in urlsArr) {
-        let stateKey = [urlsArr[url][0]];
-        setState(prev => ({ ...prev, [stateKey]: urlsArr[url][1] }))
+      chrome.runtime.sendMessage(result) // Debugging
+      for (let url in result.urls.groupOne) {
+        setState(prev => ({ ...prev, [url]: result.urls.groupOne[url] }))
       }
+      for (let url in result.urls.groupTwo) {
+        setState(prev => ({ ...prev, [url]: result.urls.groupTwo[url] }))
+      }
+      chrome.runtime.sendMessage(state) // Debugging
     })
   }, [])
 
@@ -86,9 +89,9 @@ export default function Settings({ setPage }) {
           <div className="urlForms card">
             <h3 className="cardTitle">Link group 1</h3>
             {formGroups.groupOne.map((item, index) => (
-              <div className="urlForm">
+              <div key={index} className="urlForm">
                 <label className="urlLabel">{item.label}</label>
-                <input placeholder={item.placeholder} onChange={item.onChangeFunction} />
+                <input value={item.placeholder} onChange={item.onChangeFunction} />
               </div>
             ))}
           </div>
@@ -96,9 +99,9 @@ export default function Settings({ setPage }) {
           <div className="urlForms card">
             <h3 className="cardTitle">Link group 2</h3>
             {formGroups.groupTwo.map((item, index) => (
-              <div className="urlForm">
+              <div key={index} className="urlForm">
                 <label className="urlLabel">{item.label}</label>
-                <input placeholder={item.placeholder} onChange={item.onChangeFunction} />
+                <input value={item.placeholder} onChange={item.onChangeFunction} />
               </div>
             ))}
           </div>
