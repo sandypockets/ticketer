@@ -10,7 +10,7 @@ export default function Home({ ticketCount, increaseTicketCount, decreaseTicketC
     <div className="container">
       <div>
 
-        <h1 className="title">Productivity Title</h1>
+        <h1 className="title">Ticketer</h1>
         <div className="card">
           <div>
             <div className="elapsedTime">
