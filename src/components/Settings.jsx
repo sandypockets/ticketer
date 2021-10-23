@@ -7,7 +7,10 @@ export default function Settings({ setPage }) {
     urlThree: '',
     urlFour: '',
     urlFive: '',
-    UrlSix: ''
+    urlSix: '',
+    urlSeven: '',
+    urlEight: '',
+    urlNine: '',
   })
 
   useEffect(() => {
@@ -36,6 +39,11 @@ export default function Settings({ setPage }) {
           urlFour: state.urlFour,
           urlFive: state.urlFive,
           urlSix: state.urlSix
+        },
+        groupThree: {
+          urlFour: state.urlSeven,
+          urlFive: state.urlEight,
+          urlSix: state.urlNine
         }
       }
     });
@@ -75,6 +83,23 @@ export default function Settings({ setPage }) {
         "placeholder": state.urlSix,
         "onChangeFunction": (event) => setState(prev => ({ ...prev, urlSix: event.target.value }))
       }
+    ],
+    groupThree: [
+      {
+        "label": "URL",
+        "placeholder": state.urlSeven,
+        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlSeven: event.target.value }))
+      },
+      {
+        "label": "URL",
+        "placeholder": state.urlEight,
+        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlEight: event.target.value }))
+      },
+      {
+        "label": "URL",
+        "placeholder": state.urlNine,
+        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlNine: event.target.value }))
+      }
     ]
   }
 
@@ -99,6 +124,16 @@ export default function Settings({ setPage }) {
           <div className="urlForms card">
             <h3 className="linkGroupTitle cardTitle">Link group 2</h3>
             {formGroups.groupTwo.map((item, index) => (
+              <div key={index} className="urlForm">
+                <label className="urlLabel">{item.label}</label>
+                <input value={item.placeholder} onChange={item.onChangeFunction} />
+              </div>
+            ))}
+          </div>
+
+          <div className="urlForms card">
+            <h3 className="linkGroupTitle cardTitle">Link group 2</h3>
+            {formGroups.groupThree.map((item, index) => (
               <div key={index} className="urlForm">
                 <label className="urlLabel">{item.label}</label>
                 <input value={item.placeholder} onChange={item.onChangeFunction} />
