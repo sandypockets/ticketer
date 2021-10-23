@@ -1,11 +1,11 @@
-const openTabGroupOne = () => {
-  chrome.runtime.sendMessage("openTabGroupOne");
-}
-const openTabGroupTwo = () => {
-  chrome.runtime.sendMessage("openTabGroupTwo");
-}
-
 export default function Home({ ticketCount, increaseTicketCount, decreaseTicketCount, time, handleOn, handleOff, handlePause, setPage, handleReset }) {
+  const openTabGroupOne = () => {
+    chrome.runtime.sendMessage("openTabGroupOne");
+  }
+  const openTabGroupTwo = () => {
+    chrome.runtime.sendMessage("openTabGroupTwo");
+  }
+
   return (
     <div className="container">
       <div>
