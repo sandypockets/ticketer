@@ -1,19 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 :root {
-    --primaryColor: #541388;
-    --secondaryColor: #d90368;
-    --primaryAccent: #70A9A1;
-    --secondaryAccent: #f1e9da;
+    --primaryColor: #725ac1;
+    --primaryAccent: #cac4ce;
+    --secondaryColor: #242038;
+    --secondaryAccent: #cac4ce;
+
+    /*--primaryColor: #541388;*/
+    /*--primaryAccent: #70A9A1;*/
+    /*--secondaryColor: #d90368;*/
+    /*--secondaryAccent: #f1e9da;*/
     --transitionDurationSlow: 150ms;
     --transitionDurationFast: 50ms;
 }
 
 .app {
     width: 330px;
-    height: 500px;
+    height: 530px;
     background-color: var(--primaryColor);
     font-size: calc(10px + 2vmin);
     color: var(--primaryAccent);
     padding: 10px;
+    font-family: "Inter", sans-serif;
 }
 
 
@@ -27,7 +35,10 @@ div.urlForm > input {
     width: 200px;
     border: none;
     border-radius: 5px;
-    padding: 3px;
+    padding: 4px;
+}
+div.urlForm > input:focus {
+    outline-color: var(--primaryColor);
 }
 button.saveUrls {
     display: flex;
