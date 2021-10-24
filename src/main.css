@@ -1,20 +1,10 @@
 :root {
-    --primaryColor: #1F363D;
-    --secondaryColor: #e1eaf3;
+    --primaryColor: #541388;
+    --secondaryColor: #d90368;
     --primaryAccent: #70A9A1;
-    --black: #151515;
-    /* Purple Pink */
-    /*--primaryColor: #480ca8;*/
-    /*--secondaryColor: #ffffff;*/
-    /*--primaryAccent: #f72585;*/
-    /*--secondaryColor: #4cc9f0;*/
-    /*--black: #151515;*/
-    /* Greens */
-    /*--primaryColor: #008060;*/
-    /*--secondaryColor: #ffffff;*/
-    /*--primaryAccent: #fbf7ed;*/
-    /*--secondaryColor: #ffffff;*/
-    /*--black: #151515;*/
+    --secondaryAccent: #f1e9da;
+    --transitionDurationSlow: 150ms;
+    --transitionDurationFast: 50ms;
 }
 
 .app {
@@ -26,103 +16,104 @@
     padding: 10px;
 }
 
-a {
-    color: var(--primaryAccent);
-    cursor: pointer;
-}
 
-h1, h2, h3, h4, span, label {
-    color: var(--primaryColor);
-}
-
-p {
-    color: var(--black);
-    font-size: 14px;
-}
-
-h1.title {
-    color: var(--secondaryColor);
-    margin: 0 0 0 7px;
-}
-
+/* URL FORMS - START */
 div.urlForms > h3 {
     display: flex;
     justify-content: center;
 }
-
 div.urlForm > input {
     margin: 5px 0 0 0;
     width: 200px;
     border: none;
     border-radius: 5px;
     padding: 3px;
-
 }
-
 button.saveUrls {
     display: flex;
     justify-content: center;
     background-color: var(--secondaryColor);
-    color: var(--primaryColor);
+    color: var(--secondaryAccent);
 }
-
 h3.linkGroupTitle {
     margin: 0;
 }
-
 label.urlLabel {
     margin: 0 1em;
 }
+/* URL FORMS - END */
 
 /* Utility classes */
+a {
+    color: var(--primaryAccent);
+    cursor: pointer;
+    transition-duration: var(--transitionDurationFast);
+}
+a:hover {
+    color: var(--secondaryAccent);
+    transition-duration: var(--transitionDurationSlow);
+}
+h1, h2, h3, h4, span, label {
+    color: var(--secondaryAccent);
+}
+h1 {
+    margin: 0;
+}
+h1.title {
+    color: var(--secondaryAccent);
+    margin: 0 0 0 7px;
+}
 h3.cardTitle {
     margin: 0;
     font-weight: 900;
     letter-spacing: 0.025em;
 }
-
+p {
+    color: var(--secondaryAccent);
+    font-size: 14px;
+}
 .container {
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-
 .flex-center {
     display: flex;
     justify-content: center;
 }
-
 button {
     padding: 0.5em 1em;
     background-color: var(--primaryColor);
-    color: var(--secondaryColor);
+    color: var(--secondaryAccent);
     border: none;
     margin: 0.5em;
     font-weight: bold;
     cursor: pointer;
     box-shadow: 1px 1px 2px #00212b;
-    border-radius: 2px;
+    border-radius: 4px;
+    transition-duration: var(--transitionDurationFast);
 }
-
+button:hover {
+    background-color: var(--secondaryAccent);
+    color: var(--primaryColor);
+    transition-duration: var(--transitionDurationSlow);
+}
 button.square {
     height: 25px;
     width: 25px;
     font-weight: 900;
 }
-
 div.buttonGroup {
     display: flex;
     justify-content: center;
 }
-
 svg.svg {
-    fill: var(--secondaryColor);
+    fill: var(--secondaryAccent);
     height: 1em;
     width: 1em;
     margin-left: -6px;
 }
-
 .card {
     background-color: var(--secondaryColor);
     padding: 10px;
@@ -130,11 +121,6 @@ svg.svg {
     border-radius: 5px;
     box-shadow: 3px 3px 4px #00212b;
 }
-
-h1 {
-    margin: 0;
-}
-
 input {
     color: black;
 }
