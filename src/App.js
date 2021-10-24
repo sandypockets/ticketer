@@ -12,15 +12,15 @@ function App() {
     urlOne: '',
     urlTwo: '',
     urlThree: '',
-    groupOneIsPinned: true,
+    groupOneIsPinned: false,
     urlFour: '',
     urlFive: '',
     urlSix: '',
-    groupTwoIsPinned: true,
+    groupTwoIsPinned: false,
     urlSeven: '',
     urlEight: '',
     urlNine: '',
-    groupThreeIsPinned: true
+    groupThreeIsPinned: false
   })
 
   useEffect(() => {

@@ -16,7 +16,7 @@
 
 .app {
     width: 330px;
-    height: 530px;
+    height: 550px;
     background-color: var(--primaryColor);
     font-size: calc(10px + 2vmin);
     color: var(--primaryAccent);
@@ -30,12 +30,22 @@ div.urlForms > h3 {
     display: flex;
     justify-content: center;
 }
+div.urlForm {
+    display: flex;
+}
 div.urlForm > input {
     margin: 5px 0 0 0;
     width: 200px;
     border: none;
     border-radius: 5px;
     padding: 4px;
+}
+.textInput {
+    margin: 0 1em;
+}
+.checkboxInput {
+    margin: 0 1em;
+    width: 300px;
 }
 div.urlForm > input:focus {
     outline-color: var(--primaryColor);

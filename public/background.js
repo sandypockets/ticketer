@@ -36,12 +36,11 @@ chrome.storage.local.get(function(result) {
 chrome.runtime.onMessage.addListener(function(message) {
   if (message.id === 'tabs') {
     if (message.payload === 'openTabGroupOne') {
-      let storedUrls;
       chrome.storage.local.get(['urls'], function(result) {
         console.log("EVENT!--storage.local.RESULT: ", result)
-        storedUrls = result.urls.groupOne.urls;
+        const storedUrls = result.urls.groupOne.urls;
+        const isPinned = result.urls.groupOne.groupOneIsPinned
         console.log("STORED URLS: ", storedUrls)
-        const isPinned = message.isPinned;
         const urlsArr = Object.entries(storedUrls)
         for (let arr in urlsArr) {
           console.log("urlsArr[arr]!!!!!!", arr)
@@ -50,24 +49,25 @@ chrome.runtime.onMessage.addListener(function(message) {
       })
     }
     if (message.payload === 'openTabGroupTwo') {
-      let storedUrls;
       chrome.storage.local.get(['urls'], function(result) {
-        console.log("EVENT!--storage.local.RESULT: ", result.urls)
-        storedUrls = result.urls.groupTwo;
+        const storedUrls = result.urls.groupTwo.urls;
+        const isPinned = result.urls.groupTwo.groupTwoIsPinned
+        console.log("EVENT!--storedUrls: ", storedUrls)
         const urlsArr = Object.entries(storedUrls)
         for (let arr in urlsArr) {
-          chrome.tabs.create({ url: urlsArr[arr][1], pinned: message.groupTwoIsPinned })
+          chrome.tabs.create({ url: urlsArr[arr][1], pinned: isPinned })
         }
       })
     }
     if (message.payload === 'openTabGroupThree') {
-      let storedUrls;
       chrome.storage.local.get(['urls'], function(result) {
-        console.log("EVENT!--storage.local.RESULT: ", result.urls)
-        storedUrls = result.urls.groupThree;
+        console.log("GroupThree RESULT", result)
+        const storedUrls = result.urls.groupThree.urls;
+        const isPinned = result.urls.groupThree.groupThreeIsPinned
+        console.log("EVENT!--storedUrls: ", storedUrls)
         const urlsArr = Object.entries(storedUrls)
         for (let arr in urlsArr) {
-          chrome.tabs.create({ url: urlsArr[arr][1], pinned: message.groupThreeIsPinned })
+          chrome.tabs.create({ url: urlsArr[arr][1], pinned: isPinned })
         }
       })
     }

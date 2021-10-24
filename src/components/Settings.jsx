@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 export default function Settings({ setPage, state, setState }) {
 
@@ -9,12 +9,14 @@ export default function Settings({ setPage, state, setState }) {
         setState(prev => ({ ...prev, [url]: result.urls.groupOne.urls[url] }))
       }
       setState(prev => ({ ...prev, groupOneIsPinned: result.urls.groupOne.groupOneIsPinned }))
-      for (let url in result.urls.groupTwo) {
-        setState(prev => ({ ...prev, [url]: result.urls.groupTwo[url] }))
+      for (let url in result.urls.groupTwo.urls) {
+        setState(prev => ({ ...prev, [url]: result.urls.groupTwo.urls[url] }))
       }
-      for (let url in result.urls.groupThree) {
-        setState(prev => ({ ...prev, [url]: result.urls.groupThree[url] }))
+      setState(prev => ({ ...prev, groupTwoIsPinned: result.urls.groupTwo.groupTwoIsPinned }))
+      for (let url in result.urls.groupThree.urls) {
+        setState(prev => ({ ...prev, [url]: result.urls.groupThree.urls[url] }))
       }
+      setState(prev => ({ ...prev, groupThreeIsPinned: result.urls.groupThree.groupThreeIsPinned }))
     })
   }, [])
 
@@ -28,21 +30,22 @@ export default function Settings({ setPage, state, setState }) {
             urlTwo: state.urlTwo,
             urlThree: state.urlThree,
           },
-          // urlOne: state.urlOne,
-          // urlTwo: state.urlTwo,
-          // urlThree: state.urlThree,
           groupOneIsPinned: state.groupOneIsPinned
         },
         groupTwo: {
-          urlFour: state.urlFour,
-          urlFive: state.urlFive,
-          urlSix: state.urlSix,
+          urls: {
+            urlFour: state.urlFour,
+            urlFive: state.urlFive,
+            urlSix: state.urlSix,
+          },
           groupTwoIsPinned: state.groupTwoIsPinned
         },
         groupThree: {
-          urlSeven: state.urlSeven,
-          urlEight: state.urlEight,
-          urlNine: state.urlNine,
+          urls: {
+            urlSeven: state.urlSeven,
+            urlEight: state.urlEight,
+            urlNine: state.urlNine,
+          },
           groupTwoIsPinned: state.groupTwoIsPinned
         }
       }
@@ -55,19 +58,22 @@ export default function Settings({ setPage, state, setState }) {
         "label": "URL",
         "type": "text",
         "value": state.urlOne,
-        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlOne: event.target.value }))
+        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlOne: event.target.value })),
+        "className": "textInput"
       },
       {
         "label": "URL",
         "type": "text",
         "value": state.urlTwo,
-        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlTwo: event.target.value }))
+        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlTwo: event.target.value })),
+        "className": "textInput"
       },
       {
         "label": "URL",
         "type": "text",
         "value": state.urlThree,
-        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlThree: event.target.value }))
+        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlThree: event.target.value })),
+        "className": "textInput"
       },
       {
         "label": "Pin tabs on open",
@@ -76,47 +82,74 @@ export default function Settings({ setPage, state, setState }) {
         "onChangeFunction":  (event) => {
           setState(prev => ({...prev, groupOneIsPinned: !state.groupOneIsPinned}))
           handleSubmit()
-          chrome.runtime.sendMessage({
-            id: 'debug',
-            payload: state.groupOneIsPinned
-          })
         },
         "checked": state.groupOneIsPinned,
-        "value": state.groupOneIsPinned
+        "value": state.groupOneIsPinned,
+        "className": "checkboxInput"
       }
     ],
     groupTwo: [
       {
         "label": "URL",
         "value": state.urlFour,
-        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlFour: event.target.value }))
+        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlFour: event.target.value })),
+        "className": "textInput"
       },
       {
         "label": "URL",
         "value": state.urlFive,
-        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlFive: event.target.value }))
+        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlFive: event.target.value })),
+        "className": "textInput"
       },
       {
         "label": "URL",
         "value": state.urlSix,
-        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlSix: event.target.value }))
+        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlSix: event.target.value })),
+        "className": "textInput"
+      },
+      {
+        "label": "Pin tabs on open",
+        "type": "checkbox",
+        "id": "pinnedOnOpen",
+        "onChangeFunction":  (event) => {
+          setState(prev => ({...prev, groupTwoIsPinned: !state.groupTwoIsPinned}))
+          handleSubmit()
+        },
+        "checked": state.groupTwoIsPinned,
+        "value": state.groupTwoIsPinned,
+        "className": "checkboxInput"
       }
     ],
     groupThree: [
       {
         "label": "URL",
         "value": state.urlSeven,
-        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlSeven: event.target.value }))
+        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlSeven: event.target.value })),
+        "className": "textInput"
       },
       {
         "label": "URL",
         "value": state.urlEight,
-        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlEight: event.target.value }))
+        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlEight: event.target.value })),
+        "className": "textInput"
       },
       {
         "label": "URL",
         "value": state.urlNine,
-        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlNine: event.target.value }))
+        "onChangeFunction": (event) => setState(prev => ({ ...prev, urlNine: event.target.value })),
+        "className": "textInput"
+      },
+      {
+        "label": "Pin tabs on open",
+        "type": "checkbox",
+        "id": "pinnedOnOpen",
+        "onChangeFunction":  (event) => {
+          setState(prev => ({...prev, groupThreeIsPinned: !state.groupThreeIsPinned}))
+          handleSubmit()
+        },
+        "checked": state.groupThreeIsPinned,
+        "value": state.groupThreeIsPinned,
+        "className": "checkboxInput"
       }
     ]
   }
@@ -127,13 +160,11 @@ export default function Settings({ setPage, state, setState }) {
     <>
       <div className="container">
         <div>
-          <h1 className="title">Settings</h1>
-
           <div className="urlForms card">
             <h3 className="linkGroupTitle cardTitle">Link group 1</h3>
             {formGroups.groupOne.map((item, index) => (
               <div key={index} className="urlForm">
-                <label className="urlLabel">{item.label}</label>
+                <label className={item.className}>{item.label}</label>
                 <input type={item.type} value={item.value} checked={item.checked} onChange={item.onChangeFunction} />
               </div>
             ))}
@@ -143,8 +174,8 @@ export default function Settings({ setPage, state, setState }) {
             <h3 className="linkGroupTitle cardTitle">Link group 2</h3>
             {formGroups.groupTwo.map((item, index) => (
               <div key={index} className="urlForm">
-                <label className="urlLabel">{item.label}</label>
-                <input value={item.value} onChange={item.onChangeFunction} />
+                <label className={item.className}>{item.label}</label>
+                <input type={item.type} value={item.value} checked={item.checked} onChange={item.onChangeFunction} />
               </div>
             ))}
           </div>
@@ -153,13 +184,13 @@ export default function Settings({ setPage, state, setState }) {
             <h3 className="linkGroupTitle cardTitle">Link group 3</h3>
             {formGroups.groupThree.map((item, index) => (
               <div key={index} className="urlForm">
-                <label className="urlLabel">{item.label}</label>
-                <input value={item.value} onChange={item.onChangeFunction} />
+                <label className={item.className}>{item.label}</label>
+                <input type={item.type} value={item.value} checked={item.checked} onChange={item.onChangeFunction} />
               </div>
             ))}
           </div>
 
-          <button className="saveUrls" onClick={handleSubmit}>Update URLs</button>
+          <button className="saveUrls" onClick={handleSubmit}>Save</button>
         </div>
         <a onClick={() => setPage('home')}>Back</a>
       </div>
