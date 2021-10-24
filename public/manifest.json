@@ -1,11 +1,9 @@
 {
   "name": "Ticketer",
-  "description": "Ticket tracking and productivity",
+  "description": "Ticket tracking and productivity helper",
   "version": "1.0",
   "manifest_version": 3,
   "permissions": [
-    "activeTab",
-    "debugger",
     "alarms",
     "storage",
     "background",
@@ -21,8 +19,11 @@
     "default_title": "Ticketer"
   },
   "icons": {
-    "16": "logo192.png",
-    "48": "logo192.png",
-    "128": "logo192.png"
+    "16": "images/ticket.png",
+    "24": "images/ticket_24.png",
+    "32": "images/ticket_32.png",
+    "64": "images/ticket_64.png",
+    "128": "images/ticket_128.png",
+    "256": "images/ticket_256.png"
   }
 }
