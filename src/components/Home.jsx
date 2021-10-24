@@ -12,14 +12,12 @@ export default function Home({ ticketCount, increaseTicketCount, decreaseTicketC
   return (
     <div className="container">
       <div>
-
         <h1 className="title">Ticketer</h1>
         <div className="card">
+          <h3 className="flex-center cardTitle">Timer</h3>
           <div>
             <div className="elapsedTime">
-              <h3>Time spent:</h3>
-              <h2>{time ? time : 0}</h2>
-              <h3>{time !== 1 ? "minutes" : "minute"}</h3>
+              <h2>{time ? time : 0}{time !== 1 ? " minutes" : " minute"}</h2>
             </div>
           </div>
           <div className="buttonGroup">
@@ -37,7 +35,6 @@ export default function Home({ ticketCount, increaseTicketCount, decreaseTicketC
             </button>
           </div>
         </div>
-
         <div className="card">
           <h3 className="flex-center cardTitle">Tickets completed</h3>
           <div className="buttonGroup">
@@ -58,7 +55,6 @@ export default function Home({ ticketCount, increaseTicketCount, decreaseTicketC
             </div>
           </div>
         </div>
-
         <div className="card">
         <div className="flex-center">
           <h3 className="cardTitle">Quick tabs</h3>
