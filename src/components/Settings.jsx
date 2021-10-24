@@ -46,7 +46,7 @@ export default function Settings({ setPage, state, setState }) {
             urlEight: state.urlEight,
             urlNine: state.urlNine,
           },
-          groupTwoIsPinned: state.groupTwoIsPinned
+          groupThreeIsPinned: state.groupThreeIsPinned
         }
       }
     });
