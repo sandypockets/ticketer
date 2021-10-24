@@ -5,6 +5,9 @@ export default function Home({ ticketCount, increaseTicketCount, decreaseTicketC
   const openTabGroupTwo = () => {
     chrome.runtime.sendMessage("openTabGroupTwo");
   }
+  const openTabGroupThree = () => {
+    chrome.runtime.sendMessage("openTabGroupThree");
+  }
 
   return (
     <div className="container">
@@ -68,6 +71,9 @@ export default function Home({ ticketCount, increaseTicketCount, decreaseTicketC
               </button>
               <button onClick={openTabGroupTwo}>
                 Group 2
+              </button>
+              <button onClick={openTabGroupThree}>
+                Group 3
               </button>
             </div>
           </div>

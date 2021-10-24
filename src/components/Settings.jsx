@@ -22,7 +22,9 @@ export default function Settings({ setPage }) {
       for (let url in result.urls.groupTwo) {
         setState(prev => ({ ...prev, [url]: result.urls.groupTwo[url] }))
       }
-      chrome.runtime.sendMessage(state) // Debugging
+      for (let url in result.urls.groupThree) {
+        setState(prev => ({ ...prev, [url]: result.urls.groupThree[url] }))
+      }
     })
   }, [])
 
@@ -41,9 +43,9 @@ export default function Settings({ setPage }) {
           urlSix: state.urlSix
         },
         groupThree: {
-          urlFour: state.urlSeven,
-          urlFive: state.urlEight,
-          urlSix: state.urlNine
+          urlSeven: state.urlSeven,
+          urlEight: state.urlEight,
+          urlNine: state.urlNine
         }
       }
     });
@@ -53,51 +55,51 @@ export default function Settings({ setPage }) {
     groupOne: [
       {
         "label": "URL",
-        "placeholder": state.urlOne,
+        "value": state.urlOne,
         "onChangeFunction": (event) => setState(prev => ({ ...prev, urlOne: event.target.value }))
       },
       {
         "label": "URL",
-        "placeholder": state.urlTwo,
+        "value": state.urlTwo,
         "onChangeFunction": (event) => setState(prev => ({ ...prev, urlTwo: event.target.value }))
       },
       {
         "label": "URL",
-        "placeholder": state.urlThree,
+        "value": state.urlThree,
         "onChangeFunction": (event) => setState(prev => ({ ...prev, urlThree: event.target.value }))
       }
     ],
     groupTwo: [
       {
         "label": "URL",
-        "placeholder": state.urlFour,
+        "value": state.urlFour,
         "onChangeFunction": (event) => setState(prev => ({ ...prev, urlFour: event.target.value }))
       },
       {
         "label": "URL",
-        "placeholder": state.urlFive,
+        "value": state.urlFive,
         "onChangeFunction": (event) => setState(prev => ({ ...prev, urlFive: event.target.value }))
       },
       {
         "label": "URL",
-        "placeholder": state.urlSix,
+        "value": state.urlSix,
         "onChangeFunction": (event) => setState(prev => ({ ...prev, urlSix: event.target.value }))
       }
     ],
     groupThree: [
       {
         "label": "URL",
-        "placeholder": state.urlSeven,
+        "value": state.urlSeven,
         "onChangeFunction": (event) => setState(prev => ({ ...prev, urlSeven: event.target.value }))
       },
       {
         "label": "URL",
-        "placeholder": state.urlEight,
+        "value": state.urlEight,
         "onChangeFunction": (event) => setState(prev => ({ ...prev, urlEight: event.target.value }))
       },
       {
         "label": "URL",
-        "placeholder": state.urlNine,
+        "value": state.urlNine,
         "onChangeFunction": (event) => setState(prev => ({ ...prev, urlNine: event.target.value }))
       }
     ]
@@ -116,7 +118,7 @@ export default function Settings({ setPage }) {
             {formGroups.groupOne.map((item, index) => (
               <div key={index} className="urlForm">
                 <label className="urlLabel">{item.label}</label>
-                <input value={item.placeholder} onChange={item.onChangeFunction} />
+                <input value={item.value} onChange={item.onChangeFunction} />
               </div>
             ))}
           </div>
@@ -126,17 +128,17 @@ export default function Settings({ setPage }) {
             {formGroups.groupTwo.map((item, index) => (
               <div key={index} className="urlForm">
                 <label className="urlLabel">{item.label}</label>
-                <input value={item.placeholder} onChange={item.onChangeFunction} />
+                <input value={item.value} onChange={item.onChangeFunction} />
               </div>
             ))}
           </div>
 
           <div className="urlForms card">
-            <h3 className="linkGroupTitle cardTitle">Link group 2</h3>
+            <h3 className="linkGroupTitle cardTitle">Link group 3</h3>
             {formGroups.groupThree.map((item, index) => (
               <div key={index} className="urlForm">
                 <label className="urlLabel">{item.label}</label>
-                <input value={item.placeholder} onChange={item.onChangeFunction} />
+                <input value={item.value} onChange={item.onChangeFunction} />
               </div>
             ))}
           </div>

@@ -33,11 +33,7 @@ chrome.runtime.onMessage.addListener(function(message) {
       console.log("EVENT!--storage.local.RESULT: ", result.urls)
       storedUrls = result.urls.groupOne;
       const urlsArr = Object.entries(storedUrls)
-      console.log(urlsArr)
       for (let arr in urlsArr) {
-        console.log("arr: ", urlsArr[arr])
-        console.log("arr[0]: ", urlsArr[arr][0])
-        console.log("arr[1]: ", urlsArr[arr][1])
         chrome.tabs.create({ url: urlsArr[arr][1] })
       }
     })
@@ -48,11 +44,18 @@ chrome.runtime.onMessage.addListener(function(message) {
       console.log("EVENT!--storage.local.RESULT: ", result.urls)
       storedUrls = result.urls.groupTwo;
       const urlsArr = Object.entries(storedUrls)
-      console.log(urlsArr)
       for (let arr in urlsArr) {
-        console.log("arr: ", urlsArr[arr])
-        console.log("arr[0]: ", urlsArr[arr][0])
-        console.log("arr[1]: ", urlsArr[arr][1])
+        chrome.tabs.create({ url: urlsArr[arr][1] })
+      }
+    })
+  }
+  if (message === 'openTabGroupThree') {
+    let storedUrls;
+    chrome.storage.local.get(['urls'], function(result) {
+      console.log("EVENT!--storage.local.RESULT: ", result.urls)
+      storedUrls = result.urls.groupThree;
+      const urlsArr = Object.entries(storedUrls)
+      for (let arr in urlsArr) {
         chrome.tabs.create({ url: urlsArr[arr][1] })
       }
     })
