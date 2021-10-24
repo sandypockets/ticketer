@@ -22,6 +22,7 @@ chrome.storage.onChanged.addListener(function() {
   chrome.storage.local.get(['urls'], function(result) {
     console.log("LINE 25 storage.local.urls: ", result)
   })
+  chrome.storage.local.get()
   chrome.storage.local.get(['minutes'], function(result) {
     console.log("Line 28 - MIUNTES: ", result)
   })
@@ -37,11 +38,14 @@ chrome.runtime.onMessage.addListener(function(message) {
     if (message.payload === 'openTabGroupOne') {
       let storedUrls;
       chrome.storage.local.get(['urls'], function(result) {
-        console.log("EVENT!--storage.local.RESULT: ", result.urls)
-        storedUrls = result.urls.groupOne;
+        console.log("EVENT!--storage.local.RESULT: ", result)
+        storedUrls = result.urls.groupOne.urls;
+        console.log("STORED URLS: ", storedUrls)
+        const isPinned = message.isPinned;
         const urlsArr = Object.entries(storedUrls)
         for (let arr in urlsArr) {
-          chrome.tabs.create({ url: urlsArr[arr][1] })
+          console.log("urlsArr[arr]!!!!!!", arr)
+          chrome.tabs.create({ url: urlsArr[arr][1], pinned: isPinned })
         }
       })
     }
@@ -52,7 +56,7 @@ chrome.runtime.onMessage.addListener(function(message) {
         storedUrls = result.urls.groupTwo;
         const urlsArr = Object.entries(storedUrls)
         for (let arr in urlsArr) {
-          chrome.tabs.create({ url: urlsArr[arr][1] })
+          chrome.tabs.create({ url: urlsArr[arr][1], pinned: message.groupTwoIsPinned })
         }
       })
     }
@@ -63,7 +67,7 @@ chrome.runtime.onMessage.addListener(function(message) {
         storedUrls = result.urls.groupThree;
         const urlsArr = Object.entries(storedUrls)
         for (let arr in urlsArr) {
-          chrome.tabs.create({ url: urlsArr[arr][1] })
+          chrome.tabs.create({ url: urlsArr[arr][1], pinned: message.groupThreeIsPinned })
         }
       })
     }
@@ -77,7 +81,7 @@ chrome.runtime.onMessage.addListener(function(message) {
   }
 
   if (message.id === 'debug') {
-    console.log(message.payload)
+    console.log("DEBUG: ", message.payload)
   }
 
   console.log(message) // Debugging

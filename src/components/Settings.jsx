@@ -1,24 +1,14 @@
 import { useState, useEffect } from "react";
 
-export default function Settings({ setPage }) {
-  const [state, setState] = useState({
-    urlOne: '',
-    urlTwo: '',
-    urlThree: '',
-    urlFour: '',
-    urlFive: '',
-    urlSix: '',
-    urlSeven: '',
-    urlEight: '',
-    urlNine: '',
-  })
+export default function Settings({ setPage, state, setState }) {
 
   useEffect(() => {
     chrome.storage.local.get(['urls'], function(result) {
       chrome.runtime.sendMessage(result) // Debugging
-      for (let url in result.urls.groupOne) {
-        setState(prev => ({ ...prev, [url]: result.urls.groupOne[url] }))
+      for (let url in result.urls.groupOne.urls) {
+        setState(prev => ({ ...prev, [url]: result.urls.groupOne.urls[url] }))
       }
+      setState(prev => ({ ...prev, groupOneIsPinned: result.urls.groupOne.groupOneIsPinned }))
       for (let url in result.urls.groupTwo) {
         setState(prev => ({ ...prev, [url]: result.urls.groupTwo[url] }))
       }
@@ -33,19 +23,27 @@ export default function Settings({ setPage }) {
       id: "setUrls",
       payload: {
         groupOne: {
-          urlOne: state.urlOne,
-          urlTwo: state.urlTwo,
-          urlThree: state.urlThree,
+          urls: {
+            urlOne: state.urlOne,
+            urlTwo: state.urlTwo,
+            urlThree: state.urlThree,
+          },
+          // urlOne: state.urlOne,
+          // urlTwo: state.urlTwo,
+          // urlThree: state.urlThree,
+          groupOneIsPinned: state.groupOneIsPinned
         },
         groupTwo: {
           urlFour: state.urlFour,
           urlFive: state.urlFive,
-          urlSix: state.urlSix
+          urlSix: state.urlSix,
+          groupTwoIsPinned: state.groupTwoIsPinned
         },
         groupThree: {
           urlSeven: state.urlSeven,
           urlEight: state.urlEight,
-          urlNine: state.urlNine
+          urlNine: state.urlNine,
+          groupTwoIsPinned: state.groupTwoIsPinned
         }
       }
     });
@@ -55,18 +53,36 @@ export default function Settings({ setPage }) {
     groupOne: [
       {
         "label": "URL",
+        "type": "text",
         "value": state.urlOne,
         "onChangeFunction": (event) => setState(prev => ({ ...prev, urlOne: event.target.value }))
       },
       {
         "label": "URL",
+        "type": "text",
         "value": state.urlTwo,
         "onChangeFunction": (event) => setState(prev => ({ ...prev, urlTwo: event.target.value }))
       },
       {
         "label": "URL",
+        "type": "text",
         "value": state.urlThree,
         "onChangeFunction": (event) => setState(prev => ({ ...prev, urlThree: event.target.value }))
+      },
+      {
+        "label": "Pin tabs on open",
+        "type": "checkbox",
+        "id": "pinnedOnOpen",
+        "onChangeFunction":  (event) => {
+          setState(prev => ({...prev, groupOneIsPinned: !state.groupOneIsPinned}))
+          handleSubmit()
+          chrome.runtime.sendMessage({
+            id: 'debug',
+            payload: state.groupOneIsPinned
+          })
+        },
+        "checked": state.groupOneIsPinned,
+        "value": state.groupOneIsPinned
       }
     ],
     groupTwo: [
@@ -118,7 +134,7 @@ export default function Settings({ setPage }) {
             {formGroups.groupOne.map((item, index) => (
               <div key={index} className="urlForm">
                 <label className="urlLabel">{item.label}</label>
-                <input value={item.value} onChange={item.onChangeFunction} />
+                <input type={item.type} value={item.value} checked={item.checked} onChange={item.onChangeFunction} />
               </div>
             ))}
           </div>

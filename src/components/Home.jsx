@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 
-export default function Home({ ticketCount, setTicketCount, setTime, increaseTicketCount, decreaseTicketCount, time, handleOn, handleOff, handlePause, setPage, handleReset }) {
+export default function Home({ state, setState, ticketCount, setTicketCount, setTime, increaseTicketCount, decreaseTicketCount, time, handleOn, handleOff, handlePause, setPage, handleReset }) {
 
   useEffect(() => {
     chrome.storage.local.get(['minutes'], function(result) {
@@ -12,19 +12,22 @@ export default function Home({ ticketCount, setTicketCount, setTime, increaseTic
   const openTabGroupOne = () => {
     chrome.runtime.sendMessage({
       id: 'tabs',
-      payload: "openTabGroupOne"
+      payload: "openTabGroupOne",
+      isPinned: state.groupOneIsPinned
     });
   }
   const openTabGroupTwo = () => {
     chrome.runtime.sendMessage({
       id: 'tabs',
-      payload: "openTabGroupTwo"
+      payload: "openTabGroupTwo",
+      pinned: true
     });
   }
   const openTabGroupThree = () => {
     chrome.runtime.sendMessage({
       id: 'tabs',
-      payload: "openTabGroupThree"
+      payload: "openTabGroupThree",
+      pinned: true
     });
   }
 

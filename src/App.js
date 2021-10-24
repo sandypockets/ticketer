@@ -8,6 +8,21 @@ function App() {
   const [page, setPage] = useState('home')
   const [ticketCount, setTicketCount] = useState()
 
+  const [state, setState] = useState({
+    urlOne: '',
+    urlTwo: '',
+    urlThree: '',
+    groupOneIsPinned: true,
+    urlFour: '',
+    urlFive: '',
+    urlSix: '',
+    groupTwoIsPinned: true,
+    urlSeven: '',
+    urlEight: '',
+    urlNine: '',
+    groupThreeIsPinned: true
+  })
+
   useEffect(() => {
     chrome.storage.local.get(['minutes'], function(result) {
       chrome.runtime.message(result)
@@ -77,8 +92,8 @@ function App() {
 
   return (
     <div className="app">
-      {page === 'home' && <Home ticketCount={ticketCount} setTicketCount={setTicketCount} setTime={setTime} increaseTicketCount={increaseTicketCount} decreaseTicketCount={decreaseTicketCount} time={time} handlePause={handlePause} handleOff={handleOff} handleOn={handleOn} setPage={setPage} handleReset={handleReset} />}
-      {page === 'settings' && <Settings setPage={setPage} />}
+      {page === 'home' && <Home state={state} setState={setState} ticketCount={ticketCount} setTicketCount={setTicketCount} setTime={setTime} increaseTicketCount={increaseTicketCount} decreaseTicketCount={decreaseTicketCount} time={time} handlePause={handlePause} handleOff={handleOff} handleOn={handleOn} setPage={setPage} handleReset={handleReset} />}
+      {page === 'settings' && <Settings state={state} setState={setState} setPage={setPage} />}
     </div>
   );
 }
