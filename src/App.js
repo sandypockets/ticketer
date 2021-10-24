@@ -10,6 +10,7 @@ function App() {
 
   useEffect(() => {
     chrome.storage.local.get(['minutes'], function(result) {
+      chrome.runtime.message(result)
       setTime(result.minutes)
     })
     chrome.storage.local.get(['tickets'], function(result) {
@@ -21,6 +22,11 @@ function App() {
       }
     })
   }, [])
+
+  chrome.runtime.sendMessage({
+    id: 'debug',
+    payload: time
+  }) // Debugging
 
   function setAlarm() {
     chrome.action.setBadgeText({ text: 'ON' });
@@ -71,7 +77,7 @@ function App() {
 
   return (
     <div className="app">
-      {page === 'home' && <Home ticketCount={ticketCount} increaseTicketCount={increaseTicketCount} decreaseTicketCount={decreaseTicketCount} time={time} handlePause={handlePause} handleOff={handleOff} handleOn={handleOn} setPage={setPage} handleReset={handleReset} />}
+      {page === 'home' && <Home ticketCount={ticketCount} setTicketCount={setTicketCount} setTime={setTime} increaseTicketCount={increaseTicketCount} decreaseTicketCount={decreaseTicketCount} time={time} handlePause={handlePause} handleOff={handleOff} handleOn={handleOn} setPage={setPage} handleReset={handleReset} />}
       {page === 'settings' && <Settings setPage={setPage} />}
     </div>
   );

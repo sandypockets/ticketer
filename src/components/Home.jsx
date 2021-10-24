@@ -1,12 +1,31 @@
-export default function Home({ ticketCount, increaseTicketCount, decreaseTicketCount, time, handleOn, handleOff, handlePause, setPage, handleReset }) {
+import {useEffect} from "react";
+
+export default function Home({ ticketCount, setTicketCount, setTime, increaseTicketCount, decreaseTicketCount, time, handleOn, handleOff, handlePause, setPage, handleReset }) {
+
+  useEffect(() => {
+    chrome.storage.local.get(['minutes'], function(result) {
+      setTime(result.minutes)
+    })
+  }, [])
+
+
   const openTabGroupOne = () => {
-    chrome.runtime.sendMessage("openTabGroupOne");
+    chrome.runtime.sendMessage({
+      id: 'tabs',
+      payload: "openTabGroupOne"
+    });
   }
   const openTabGroupTwo = () => {
-    chrome.runtime.sendMessage("openTabGroupTwo");
+    chrome.runtime.sendMessage({
+      id: 'tabs',
+      payload: "openTabGroupTwo"
+    });
   }
   const openTabGroupThree = () => {
-    chrome.runtime.sendMessage("openTabGroupThree");
+    chrome.runtime.sendMessage({
+      id: 'tabs',
+      payload: "openTabGroupThree"
+    });
   }
 
   return (
