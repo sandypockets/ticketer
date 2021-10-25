@@ -74,8 +74,30 @@ function App() {
 
   return (
     <div className="app">
-      {page === 'home' && <Home state={state} setState={setState} ticketCount={ticketCount} setTicketCount={setTicketCount} setTime={setTime} increaseTicketCount={increaseTicketCount} decreaseTicketCount={decreaseTicketCount} time={time} handlePause={handlePause} handleOff={handleOff} handleOn={handleOn} setPage={setPage} handleReset={handleReset} />}
-      {page === 'settings' && <Settings state={state} setState={setState} setPage={setPage} />}
+      {page === 'home' &&
+        <Home
+          state={state}
+          setState={setState}
+          ticketCount={ticketCount}
+          setTicketCount={setTicketCount}
+          setTime={setTime}
+          increaseTicketCount={increaseTicketCount}
+          decreaseTicketCount={decreaseTicketCount}
+          time={time}
+          handlePause={handlePause}
+          handleOff={handleOff}
+          handleOn={handleOn}
+          setPage={setPage}
+          handleReset={handleReset}
+        />
+      }
+      {page === 'settings' &&
+        <Settings
+          state={state}
+          setState={setState}
+          setPage={setPage}
+        />
+      }
     </div>
   );
 }
