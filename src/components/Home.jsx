@@ -12,21 +12,24 @@ export default function Home({ state, setState, ticketCount, setTicketCount, set
   const openTabGroupOne = () => {
     chrome.runtime.sendMessage({
       id: 'tabs',
-      payload: "openTabGroupOne",
+      groupId: "groupOne",
+      // payload: "openTabGroupOne",
       isPinned: state.groupOneIsPinned
     });
   }
   const openTabGroupTwo = () => {
     chrome.runtime.sendMessage({
       id: 'tabs',
-      payload: "openTabGroupTwo",
+      groupId: "groupTwo",
+      // payload: "openTabGroupTwo",
       pinned: true
     });
   }
   const openTabGroupThree = () => {
     chrome.runtime.sendMessage({
       id: 'tabs',
-      payload: "openTabGroupThree",
+      groupId: "groupThree",
+      // payload: "openTabGroupThree",
       pinned: true
     });
   }

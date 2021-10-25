@@ -7,7 +7,6 @@ function App() {
   const [time, setTime] = useState()
   const [page, setPage] = useState('home')
   const [ticketCount, setTicketCount] = useState()
-
   const [state, setState] = useState({
     urlOne: '',
     urlTwo: '',
@@ -25,7 +24,6 @@ function App() {
 
   useEffect(() => {
     chrome.storage.local.get(['minutes'], function(result) {
-      chrome.runtime.message(result)
       setTime(result.minutes)
     })
     chrome.storage.local.get(['tickets'], function(result) {
@@ -38,40 +36,24 @@ function App() {
     })
   }, [])
 
-  chrome.runtime.sendMessage({
-    id: 'debug',
-    payload: time
-  }) // Debugging
-
-  function setAlarm() {
+  const handleOn = () => {
     chrome.action.setBadgeText({ text: 'ON' });
     chrome.alarms.create({ delayInMinutes: 1, periodInMinutes: 1 });
     chrome.storage.local.set({ minutes: time });
     window.close();
   }
-  function clearAlarm() {
+  const handleOff = () => {
     setTime(0)
     chrome.action.setBadgeText({ text: '' });
     chrome.alarms.clearAll();
     chrome.storage.local.set({ minutes: 0 });
     window.close();
   }
-  function pauseAlarm() {
+  const handlePause = () => {
     chrome.action.setBadgeText({ text: '!' });
     chrome.alarms.clearAll();
     window.close();
   }
-
-  const handleOn = () => {
-    setAlarm()
-  }
-  const handleOff = () => {
-    clearAlarm()
-  }
-  const handlePause = () => {
-    pauseAlarm()
-  }
-
   const handleReset = () => {
     setTime(0)
     chrome.alarms.clearAll();
@@ -79,15 +61,15 @@ function App() {
     chrome.alarms.create({ delayInMinutes: 1, periodInMinutes: 1 });
     window.close();
   }
-
   const increaseTicketCount = () => {
     chrome.storage.local.set({ tickets: ticketCount + 1 });
     setTicketCount(ticketCount + 1);
   }
-
   const decreaseTicketCount = () => {
-    chrome.storage.local.set({ tickets: ticketCount - 1 });
-    setTicketCount(ticketCount - 1);
+    if(ticketCount > 0) {
+      chrome.storage.local.set({ tickets: ticketCount - 1 });
+      setTicketCount(ticketCount - 1);
+    }
   }
 
   return (
