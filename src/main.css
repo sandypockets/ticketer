@@ -23,47 +23,6 @@
     padding: 10px;
     font-family: "Inter", sans-serif;
 }
-
-
-/* URL FORMS - START */
-div.urlForms > h3 {
-    display: flex;
-    justify-content: center;
-}
-div.urlForm {
-    display: flex;
-}
-div.urlForm > input {
-    margin: 5px 0 0 0;
-    width: 200px;
-    border: none;
-    border-radius: 5px;
-    padding: 4px;
-}
-.textInput {
-    margin: 0 1em;
-}
-.checkboxInput {
-    margin: 0 1em;
-    width: 300px;
-}
-div.urlForm > input:focus {
-    outline-color: var(--primaryColor);
-}
-button.saveUrls {
-    display: flex;
-    justify-content: center;
-    background-color: var(--secondaryColor);
-    color: var(--secondaryAccent);
-}
-h3.linkGroupTitle {
-    margin: 0;
-}
-label.urlLabel {
-    margin: 0 1em;
-}
-/* URL FORMS - END */
-
 /* Utility classes */
 a {
     color: var(--primaryAccent);
@@ -165,3 +124,51 @@ p.info {
    margin: 0 0 1em 0;
 }
 /* End Quick tabs */
+
+/* URL FORMS - START */
+div.urlForms > h3 {
+    display: flex;
+    justify-content: center;
+}
+div.urlForm {
+    display: flex;
+}
+div.urlForm > input {
+    margin: 5px 0 0 0;
+    width: 200px;
+    border: none;
+    border-radius: 5px;
+    padding: 4px;
+}
+.textInput {
+    margin: 0 1em;
+}
+.checkboxInput {
+    margin: 0 1em;
+    width: 300px;
+}
+div.urlForm > input:focus {
+    outline-color: var(--primaryColor);
+}
+div.saveUrlsContainer {
+    display: flex;
+    justify-content: center;
+}
+button.saveUrls {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    background-color: var(--secondaryAccent);
+    color: var(--secondaryColor);
+}
+button.saveUrls:hover {
+    background-color: var(--secondaryColor);
+    color: var(--secondaryAccent);
+}
+h3.linkGroupTitle {
+    margin: 0;
+}
+label.urlLabel {
+    margin: 0 1em;
+}
+/* URL FORMS - END */

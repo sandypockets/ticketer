@@ -189,8 +189,9 @@ export default function Settings({ setPage, state, setState }) {
               </div>
             ))}
           </div>
-
-          <button className="saveUrls" onClick={handleSubmit}>Save</button>
+          <div className="saveUrlsContainer">
+            <button className="saveUrls" onClick={handleSubmit}>Save</button>
+          </div>
         </div>
         <a onClick={() => setPage('home')}>Back</a>
       </div>
