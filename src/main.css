@@ -8,7 +8,6 @@
     --transitionDurationSlow: 150ms;
     --transitionDurationFast: 50ms;
 }
-
 .app {
     width: 330px;
     height: 575px;
@@ -147,6 +146,7 @@ div.urlForm > input {
 }
 div.urlForm > input.checkboxInput {
     margin: 9px 0 0 0;
+    accent-color: var(--primaryColor);
 }
 div.urlForm > input:focus {
     outline-color: var(--primaryColor);
