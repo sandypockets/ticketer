@@ -148,8 +148,6 @@ export default function Settings({ setPage, state, setState }) {
     ]
   }
 
-
-
   return (
     <>
       <div className="container">

@@ -1,8 +1,4 @@
 // Timer
-// let storedTime;
-// chrome.storage.local.get(['minutes'], function(result) {
-//   storedTime = result.minutes
-// })
 chrome.alarms.onAlarm.addListener(function() {
   let storedTime;
   chrome.storage.local.get(['minutes'], function(result) {
@@ -23,7 +19,6 @@ chrome.runtime.onMessage.addListener(function(message) {
         });
       })
       chrome.alarms.create({ delayInMinutes: 1, periodInMinutes: 1 });
-      // chrome.storage.local.set({ minutes: time });
     }
     if (message.payload === 'timerOff') {
       chrome.action.setBadgeText({ text: '' });
