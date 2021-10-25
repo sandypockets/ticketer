@@ -79,10 +79,7 @@ export default function Settings({ setPage, state, setState }) {
         "label": "Pin tabs on open",
         "type": "checkbox",
         "id": "pinnedOnOpen",
-        "onChangeFunction":  (event) => {
-          setState(prev => ({...prev, groupOneIsPinned: !state.groupOneIsPinned}))
-          handleSubmit()
-        },
+        "onChangeFunction":  (event) => setState(prev => ({...prev, groupOneIsPinned: !state.groupOneIsPinned})),
         "checked": state.groupOneIsPinned,
         "value": state.groupOneIsPinned,
         "className": "checkboxInput"
@@ -111,10 +108,7 @@ export default function Settings({ setPage, state, setState }) {
         "label": "Pin tabs on open",
         "type": "checkbox",
         "id": "pinnedOnOpen",
-        "onChangeFunction":  (event) => {
-          setState(prev => ({...prev, groupTwoIsPinned: !state.groupTwoIsPinned}))
-          handleSubmit()
-        },
+        "onChangeFunction":  (event) => setState(prev => ({...prev, groupTwoIsPinned: !state.groupTwoIsPinned})),
         "checked": state.groupTwoIsPinned,
         "value": state.groupTwoIsPinned,
         "className": "checkboxInput"
@@ -143,10 +137,7 @@ export default function Settings({ setPage, state, setState }) {
         "label": "Pin tabs on open",
         "type": "checkbox",
         "id": "pinnedOnOpen",
-        "onChangeFunction":  (event) => {
-          setState(prev => ({...prev, groupThreeIsPinned: !state.groupThreeIsPinned}))
-          handleSubmit()
-        },
+        "onChangeFunction":  (event) => setState(prev => ({...prev, groupThreeIsPinned: !state.groupThreeIsPinned})),
         "checked": state.groupThreeIsPinned,
         "value": state.groupThreeIsPinned,
         "className": "checkboxInput"
