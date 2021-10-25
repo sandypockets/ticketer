@@ -1,15 +1,32 @@
 // Timer
-let storedTime;
-chrome.storage.local.get(['minutes'], function(result) {
-  storedTime = result.minutes
-})
+// let storedTime;
+// chrome.storage.local.get(['minutes'], function(result) {
+//   storedTime = result.minutes
+// })
 chrome.alarms.onAlarm.addListener(function() {
-  storedTime += 1;
-  chrome.storage.local.set({ minutes: storedTime });
+  let storedTime;
+  chrome.storage.local.get(['minutes'], function(result) {
+    storedTime = result.minutes
+    storedTime += 1;
+    chrome.storage.local.set({ minutes: storedTime });
+  })
 })
 
 // Tabs
 chrome.runtime.onMessage.addListener(function(message) {
+  if (message.id === 'timer') {
+    if (message.payload === 'timerOn') {
+      chrome.action.setBadgeText({ text: 'ON' });
+      chrome.storage.local.get(['minutes'], function(result) {
+        chrome.storage.local.set({
+          minutes: result.minutes !== 'undefined' ? result.minutes : 0
+        });
+      })
+      chrome.alarms.create({ delayInMinutes: 1, periodInMinutes: 1 });
+      // chrome.storage.local.set({ minutes: time });
+    }
+  }
+
   if (message.id === 'tabs') {
     chrome.storage.local.get(['urls'], function(result) {
       const storedUrls = result.urls[message.groupId].urls

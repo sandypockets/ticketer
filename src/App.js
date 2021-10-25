@@ -37,9 +37,13 @@ function App() {
   }, [])
 
   const handleOn = () => {
-    chrome.action.setBadgeText({ text: 'ON' });
-    chrome.alarms.create({ delayInMinutes: 1, periodInMinutes: 1 });
-    chrome.storage.local.set({ minutes: time });
+    chrome.runtime.sendMessage({
+      id: "timer",
+      payload: "timerOn"
+    })
+    // chrome.action.setBadgeText({ text: 'ON' });
+    // chrome.alarms.create({ delayInMinutes: 1, periodInMinutes: 1 });
+    // chrome.storage.local.set({ minutes: time });
     window.close();
   }
   const handleOff = () => {
