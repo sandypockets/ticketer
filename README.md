@@ -7,7 +7,9 @@ A Chrome extension to improve productivity and experience while working through 
 * Fast tabs - Open three URLs at once with the click of a Fast tab button.
 
 ## Screenshots
-Coming soon.
+![https://github.com/sandypockets/ticketer/blob/main/docs/ticketer-1.png?raw=true](https://github.com/sandypockets/ticketer/blob/main/docs/ticketer-1.png?raw=true)
+
+![https://github.com/sandypockets/ticketer/blob/main/docs/ticketer-3.png?raw=true](https://github.com/sandypockets/ticketer/blob/main/docs/ticketer-3.png?raw=true)
 
 ## Getting started
 This project was developed and tested with `Node 14.17.0` and `yarn 1.22.15`.
