@@ -38,8 +38,9 @@ export default function Home({ state, setState, ticketCount, setTicketCount, set
     <div className="container">
       <div>
         <h1 className="title">Ticketer</h1>
-        <div className="card">
-          <h3 className="flex-center cardTitle">Timer</h3>
+        <div className="card card-padding-increase">
+          <h3 className="flex-center cardTitle">Anti-Rabbit Hole Timer</h3>
+          <p className="flex-center info">Time how long you work on each ticket.</p>
           <div>
             <div className="elapsedTime">
               <h2>{time ? time : 0}{time !== 1 ? " minutes" : " minute"}</h2>
@@ -60,8 +61,8 @@ export default function Home({ state, setState, ticketCount, setTicketCount, set
             </button>
           </div>
         </div>
-        <div className="card">
-          <h3 className="flex-center cardTitle">Tickets completed</h3>
+        <div className="card card-padding-increase">
+          <h3 className="flex-center cardTitle">Ticket Counter</h3>
           <div className="buttonGroup">
             <div>
               <button className="square" onClick={decreaseTicketCount}>
@@ -80,11 +81,11 @@ export default function Home({ state, setState, ticketCount, setTicketCount, set
             </div>
           </div>
         </div>
-        <div className="card">
+        <div className="card card-padding-increase">
         <div className="flex-center">
-          <h3 className="cardTitle">Quick tabs</h3>
+          <h3 className="cardTitle">Fast Tabs</h3>
         </div>
-          <p className="flex-center info">Open three frequently used resources at once. Change them in Settings.</p>
+          <p className="flex-center info">Open three links at once.</p>
           <div className="buttonGroup">
             <div>
               <button onClick={openTabGroupOne}>

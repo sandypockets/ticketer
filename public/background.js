@@ -25,6 +25,21 @@ chrome.runtime.onMessage.addListener(function(message) {
       chrome.alarms.create({ delayInMinutes: 1, periodInMinutes: 1 });
       // chrome.storage.local.set({ minutes: time });
     }
+    if (message.payload === 'timerOff') {
+      chrome.action.setBadgeText({ text: '' });
+      chrome.alarms.clearAll();
+      chrome.storage.local.set({ minutes: 0 });
+    }
+    if (message.payload === 'timerPause') {
+      chrome.action.setBadgeText({ text: '!' });
+      chrome.alarms.clearAll();
+    }
+    if (message.payload === 'timerReset') {
+      chrome.alarms.clearAll();
+      chrome.storage.local.set({ minutes: 0 });
+      chrome.alarms.create({ delayInMinutes: 1, periodInMinutes: 1 });
+      chrome.action.setBadgeText({ text: 'ON' });
+    }
   }
 
   if (message.id === 'tabs') {

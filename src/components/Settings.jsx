@@ -82,7 +82,8 @@ export default function Settings({ setPage, state, setState }) {
         "onChangeFunction":  (event) => setState(prev => ({...prev, groupOneIsPinned: !state.groupOneIsPinned})),
         "checked": state.groupOneIsPinned,
         "value": state.groupOneIsPinned,
-        "className": "checkboxInput"
+        "className": "checkboxLabel",
+        "inputClassName": "checkboxInput"
       }
     ],
     groupTwo: [
@@ -111,7 +112,8 @@ export default function Settings({ setPage, state, setState }) {
         "onChangeFunction":  (event) => setState(prev => ({...prev, groupTwoIsPinned: !state.groupTwoIsPinned})),
         "checked": state.groupTwoIsPinned,
         "value": state.groupTwoIsPinned,
-        "className": "checkboxInput"
+        "className": "checkboxLabel",
+        "inputClassName": "checkboxInput"
       }
     ],
     groupThree: [
@@ -140,7 +142,8 @@ export default function Settings({ setPage, state, setState }) {
         "onChangeFunction":  (event) => setState(prev => ({...prev, groupThreeIsPinned: !state.groupThreeIsPinned})),
         "checked": state.groupThreeIsPinned,
         "value": state.groupThreeIsPinned,
-        "className": "checkboxInput"
+        "className": "checkboxLabel",
+        "inputClassName": "checkboxInput"
       }
     ]
   }
@@ -156,7 +159,7 @@ export default function Settings({ setPage, state, setState }) {
             {formGroups.groupOne.map((item, index) => (
               <div key={index} className="urlForm">
                 <label className={item.className}>{item.label}</label>
-                <input type={item.type} value={item.value} checked={item.checked} onChange={item.onChangeFunction} />
+                <input className={item.inputClassName} type={item.type} value={item.value} checked={item.checked} onChange={item.onChangeFunction} />
               </div>
             ))}
           </div>
@@ -166,7 +169,7 @@ export default function Settings({ setPage, state, setState }) {
             {formGroups.groupTwo.map((item, index) => (
               <div key={index} className="urlForm">
                 <label className={item.className}>{item.label}</label>
-                <input type={item.type} value={item.value} checked={item.checked} onChange={item.onChangeFunction} />
+                <input className={item.inputClassName} type={item.type} value={item.value} checked={item.checked} onChange={item.onChangeFunction} />
               </div>
             ))}
           </div>
@@ -176,7 +179,7 @@ export default function Settings({ setPage, state, setState }) {
             {formGroups.groupThree.map((item, index) => (
               <div key={index} className="urlForm">
                 <label className={item.className}>{item.label}</label>
-                <input type={item.type} value={item.value} checked={item.checked} onChange={item.onChangeFunction} />
+                <input className={item.inputClassName} type={item.type} value={item.value} checked={item.checked} onChange={item.onChangeFunction} />
               </div>
             ))}
           </div>

@@ -11,7 +11,7 @@
 
 .app {
     width: 330px;
-    height: 550px;
+    height: 575px;
     background-color: var(--primaryColor);
     font-size: calc(10px + 2vmin);
     color: var(--primaryAccent);
@@ -99,6 +99,9 @@ svg.svg {
 input {
     color: black;
 }
+.card-padding-increase {
+    padding: 20px 10px;
+}
 /* END Utility classes */
 
 /* Timer */
@@ -106,7 +109,7 @@ div.elapsedTime {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 40px;
+    padding: 0 40px 20px 40px;
 }
 
 div.elapsedTime > h2 {
@@ -116,7 +119,7 @@ div.elapsedTime > h2 {
 
 /* Quick tabs */
 p.info {
-   margin: 0 0 1em 0;
+   margin: 1em;
 }
 /* End Quick tabs */
 
@@ -138,9 +141,12 @@ div.urlForm > input {
 .textInput {
     margin: 0 1em;
 }
-.checkboxInput {
-    margin: 0 1em;
+.checkboxLabel {
+    margin: 5px 1em;
     width: 300px;
+}
+div.urlForm > input.checkboxInput {
+    margin: 9px 0 0 0;
 }
 div.urlForm > input:focus {
     outline-color: var(--primaryColor);

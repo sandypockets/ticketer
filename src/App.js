@@ -41,28 +41,30 @@ function App() {
       id: "timer",
       payload: "timerOn"
     })
-    // chrome.action.setBadgeText({ text: 'ON' });
-    // chrome.alarms.create({ delayInMinutes: 1, periodInMinutes: 1 });
-    // chrome.storage.local.set({ minutes: time });
     window.close();
   }
   const handleOff = () => {
+    chrome.runtime.sendMessage({
+      id: "timer",
+      payload: "timerOff"
+    })
     setTime(0)
-    chrome.action.setBadgeText({ text: '' });
-    chrome.alarms.clearAll();
-    chrome.storage.local.set({ minutes: 0 });
     window.close();
   }
   const handlePause = () => {
-    chrome.action.setBadgeText({ text: '!' });
-    chrome.alarms.clearAll();
+    chrome.runtime.sendMessage({
+      id: "timer",
+      payload: "timerPause"
+    })
     window.close();
   }
   const handleReset = () => {
+    chrome.runtime.sendMessage({
+      id: "timer",
+      payload: "timerReset"
+    })
+    window.close();
     setTime(0)
-    chrome.alarms.clearAll();
-    chrome.storage.local.set({ minutes: 0 });
-    chrome.alarms.create({ delayInMinutes: 1, periodInMinutes: 1 });
     window.close();
   }
   const increaseTicketCount = () => {
