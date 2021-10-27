@@ -41,7 +41,6 @@ function App() {
       id: "timer",
       payload: "timerOn"
     })
-    window.close();
   }
   const handleOff = () => {
     chrome.runtime.sendMessage({
