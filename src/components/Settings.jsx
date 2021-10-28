@@ -4,7 +4,6 @@ export default function Settings({ setPage, state, setState }) {
 
   useEffect(() => {
     chrome.storage.local.get(['urls'], function(result) {
-      chrome.runtime.sendMessage(result) // Debugging
       for (let url in result.urls.groupOne.urls) {
         setState(prev => ({ ...prev, [url]: result.urls.groupOne.urls[url] }))
       }
