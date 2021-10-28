@@ -9,32 +9,34 @@ chrome.alarms.onAlarm.addListener(function() {
 
 chrome.runtime.onMessage.addListener(function(message) {
   if (message.id === 'timer') {
-    if (message.payload === 'timerOn') {
-      chrome.storage.local.get(['minutes'], function(result) {
-        chrome.storage.local.set({
-          minutes: result.minutes ? result.minutes : 0
-        });
-      })
-      chrome.alarms.create({ delayInMinutes: 1, periodInMinutes: 1 });
-      chrome.action.setBadgeText({ text: 'ON' });
+    switch (message.payload) {
+      case 'timerOn':
+        chrome.storage.local.get(['minutes'], function(result) {
+          chrome.storage.local.set({
+            minutes: result.minutes ? result.minutes : 0
+          });
+        })
+        chrome.alarms.create({ delayInMinutes: 1, periodInMinutes: 1 });
+        chrome.action.setBadgeText({ text: 'ON' });
+        break;
+      case 'timerOff':
+        chrome.alarms.clearAll();
+        chrome.storage.local.set({ minutes: 0 });
+        chrome.action.setBadgeText({ text: '' });
+        break;
+      case 'timerPause':
+        chrome.alarms.clearAll();
+        chrome.action.setBadgeText({ text: 'HOLD' });
+        break;
+      case 'timerReset':
+        chrome.alarms.clearAll();
+        chrome.storage.local.set({ minutes: 0 });
+        chrome.alarms.create({ delayInMinutes: 1, periodInMinutes: 1 });
+        chrome.action.setBadgeText({ text: 'ON' });
+        break;
+      default: console.log('Message Error: No case found.')
     }
-    if (message.payload === 'timerOff') {
-      chrome.action.setBadgeText({ text: '' });
-      chrome.alarms.clearAll();
-      chrome.storage.local.set({ minutes: 0 });
-    }
-    if (message.payload === 'timerPause') {
-      chrome.action.setBadgeText({ text: '!' });
-      chrome.alarms.clearAll();
-    }
-    if (message.payload === 'timerReset') {
-      chrome.alarms.clearAll();
-      chrome.storage.local.set({ minutes: 0 });
-      chrome.alarms.create({ delayInMinutes: 1, periodInMinutes: 1 });
-      chrome.action.setBadgeText({ text: 'ON' });
-    }
-  }
-  if (message.id === 'tabs') {
+  } else if (message.id === 'tabs') {
     chrome.storage.local.get(['urls'], function(result) {
       const storedUrls = result.urls[message.groupId].urls
       const isPinnedSelector = `${message.groupId}IsPinned`
@@ -44,11 +46,12 @@ chrome.runtime.onMessage.addListener(function(message) {
         chrome.tabs.create({ url: urlsArray[item][1], pinned: isPinned })
       }
     })
-  }
-  if (message.id === 'setUrls') {
-      chrome.storage.local.set({
-        urls: message.payload
-      });
+  } else if (message.id === 'setUrls') {
+    chrome.storage.local.set({
+      urls: message.payload
+    });
+  } else {
+    console.log("400 - Incorrect message.id")
   }
 })
 
