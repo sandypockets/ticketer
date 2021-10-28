@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import LinkGroup from "./LinkGroup";
 
 export default function Settings({ setPage, state, setState }) {
 
@@ -151,35 +152,9 @@ export default function Settings({ setPage, state, setState }) {
     <>
       <div className="container">
         <div>
-          <div className="urlForms card">
-            <h3 className="linkGroupTitle cardTitle">Link group 1</h3>
-            {formGroups.groupOne.map((item, index) => (
-              <div key={index} className="urlForm">
-                <label className={item.className}>{item.label}</label>
-                <input className={item.inputClassName} type={item.type} value={item.value} checked={item.checked} onChange={item.onChangeFunction} />
-              </div>
-            ))}
-          </div>
-
-          <div className="urlForms card">
-            <h3 className="linkGroupTitle cardTitle">Link group 2</h3>
-            {formGroups.groupTwo.map((item, index) => (
-              <div key={index} className="urlForm">
-                <label className={item.className}>{item.label}</label>
-                <input className={item.inputClassName} type={item.type} value={item.value} checked={item.checked} onChange={item.onChangeFunction} />
-              </div>
-            ))}
-          </div>
-
-          <div className="urlForms card">
-            <h3 className="linkGroupTitle cardTitle">Link group 3</h3>
-            {formGroups.groupThree.map((item, index) => (
-              <div key={index} className="urlForm">
-                <label className={item.className}>{item.label}</label>
-                <input className={item.inputClassName} type={item.type} value={item.value} checked={item.checked} onChange={item.onChangeFunction} />
-              </div>
-            ))}
-          </div>
+          <LinkGroup group={formGroups.groupOne} />
+          <LinkGroup group={formGroups.groupTwo} />
+          <LinkGroup group={formGroups.groupThree} />
           <div className="saveUrlsContainer">
             <button className="saveUrls" onClick={handleSubmit}>Save</button>
           </div>
